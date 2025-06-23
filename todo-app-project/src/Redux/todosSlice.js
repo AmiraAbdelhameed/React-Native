@@ -9,7 +9,9 @@ export const FILTRATION_TYPES = {
 
 const todosSlice = createSlice({
   name:"todos",
-  initialState:{todos:[]},
+  initialState:{todos:[],
+    filter: FILTRATION_TYPES.ALL,
+  },
   reducers:{
 addToDo:(state , action)=>{
   const newTodo = action.payload;

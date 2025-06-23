@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import TodoList from '../components/TodoList';
 import { styles } from '../../styles';
 const CompletedTasks = () => {
-    const dispatch =useDispatch();
     const todos = useSelector((state) =>
         state.todo.todos.filter((todo) => todo.completed)
       );
@@ -12,15 +11,20 @@ const CompletedTasks = () => {
       
     return (
         <>
+           
             <View style={styles.container}>
-                <Text >completed task</Text>
-            <FlatList 
-             data={todos} 
-             style={styles.todosContainer} 
-             keyExtractor={(item) => item.id} 
-             renderItem={(item) => <TodoList todo={item} /> } 
-             
-             />
+                {todos.length === 0 ? (
+                    <View style={styles.emptyContainer}>
+                        <Text style={styles.emptyText}>No completed tasks</Text>
+                    </View>
+                ) : (
+                    <FlatList
+                        data={todos}
+                        style={styles.todosContainer}
+                        keyExtractor={(item) => item.id}
+                        renderItem={({ item }) => <TodoList todo={item} />}
+                    />
+                )}
             </View>
            
         </>

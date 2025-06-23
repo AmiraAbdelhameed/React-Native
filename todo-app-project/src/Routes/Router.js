@@ -6,6 +6,7 @@ import CompletedTasks from "../pages/CompletedTasks";
 import StackNavigator from "./StackNavigator";
 import Entypo from '@expo/vector-icons/Entypo';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import { Colors } from "react-native/Libraries/NewAppScreen";
 export const PATHS = {
       HOME: 'Home page',
       COMPLETED_TASKS: 'completed tasks',
@@ -17,9 +18,15 @@ const Router = () => {
         <>
             <NavigationContainer>
                 <Tab.Navigator screenOptions={{
-                   
+                    headerTitleStyle: {
+                        color: "#5B3E90",
+                    },
+                    tabBarActiveTintColor: '#5B3E90',     
+                      tabBarInactiveTintColor: '#999999'
+                 
                 }}>
                 <Tab.Screen name={PATHS.HOME} component={StackNavigator} options={{
+                    
                     tabBarIcon:()=>(
                         <Entypo name="home" size={24} color="#5B3E90" />
                     )
